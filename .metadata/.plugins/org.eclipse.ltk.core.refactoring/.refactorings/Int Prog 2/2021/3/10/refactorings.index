@@ -1,0 +1,7 @@
+1614681337716	Move 4 resources to 'WEB-INF'
+1614681515329	Move 'header.jsp' to 'layout'
+1614681526751	Move 3 resources to 'views'
+1614681923652	Delete element
+1614682057469	Move 'index.jsp' to 'WEB-INF'
+1614682147582	Move 'index.jsp' to 'WebContent'
+1614682659857	Move 'css' to 'WebContent'

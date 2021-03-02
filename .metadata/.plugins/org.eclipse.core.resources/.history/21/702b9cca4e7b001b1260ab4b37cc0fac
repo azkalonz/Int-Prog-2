@@ -1,0 +1,70 @@
+package com.intprog.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.intprog.dao.EmployeeDAO;
+import com.intprog.model.Employee;
+
+/**
+ * Servlet implementation class EmployeeServlet
+ */
+@WebServlet("/employee")
+public class EmployeeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	EmployeeDAO employeeDAO = new EmployeeDAO();
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EmployeeServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		ArrayList<Employee> employees = new ArrayList<Employee>();
+		Employee emp = new Employee();
+		try {
+			emp = employeeDAO.selectEmployee(Integer.parseInt(id));
+			if(emp.employeeID>=0) {
+				getServletContext().setAttribute("employee", emp);		
+				System.out.print("hahahahaha");
+				getServletContext().getRequestDispatcher("/WEB-INF/views/employee.jsp").forward(request, response);
+			} else {
+				System.out.print("aaha");
+				employees = employeeDAO.allEmployee();
+				getServletContext().setAttribute("employees", employees);	
+				getServletContext().getRequestDispatcher("/WEB-INF/views/employees.jsp").forward(request, response);
+			}
+		} catch(Exception e) {
+			
+		}
+		try {
+			employees = employeeDAO.allEmployee();
+			getServletContext().setAttribute("employees", employees);		
+			getServletContext().getRequestDispatcher("/WEB-INF/views/employees.jsp").forward(request, response);
+		}catch(Exception e) {			
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Employee</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
+</head>
+<body>
+<header>
+        <div class="container">
+            <h1>OPEN SOURCE</h1>
+            <div class="namesCon">
+                <div class="names">
+                    <h3>Judaya</h3>
+                    <span>Mark Josep</span>
+                </div>
+                <div class="names">
+                    <h3>Cabrera</h3>
+                    <span>Kimberly</span>
+                </div>
+                <div class="names">
+                    <h3>Rosell</h3>
+                    <span>Eve Grace</span>
+                </div>
+                <div class="names">
+                    <h3>Ayade</h3>
+                    <span>Mark Raymond</span>
+                </div>
+            </div>            
+        </div>
+    </header>
+    <div class="navCon">
+        <div class="container">
+            <div class="button">
+                <a href="register.html">Register User</a>
+            </div>
+            <div class="button">
+                <a href="view.html">View Users</a>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,128 @@
+package com.intprog.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.intprog.model.Employee;
+
+public class EmployeeDAO {
+	  private static final String url = "jdbc:mysql://localhost:3306/sales_database?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	  private static final String user = "root";
+	  private static final String password = "";
+    
+	  public ArrayList<Employee> selectAll() throws ClassNotFoundException {
+		String INSERT_USERS_SQL = "SELECT * FROM employee_table";
+		ArrayList<Employee> employees = new ArrayList<Employee>();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        try (Connection connection = DriverManager
+            .getConnection(url,user,password);
+
+            // Step 2:Create a statement using connection object
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+
+            System.out.println(preparedStatement);
+            // Step 3: Execute the query or update query
+            ResultSet result = preparedStatement.executeQuery();
+            
+            while(result.next()) {
+              	Employee employee = new Employee();
+            	employee.setFirstname(result.getString("firstname"));
+            	employee.setLastname(result.getString("lastname"));
+            	employee.setMi(result.getString("mi"));
+            	employee.setEmail(result.getString("email"));
+            	employee.setUsername(result.getString("username"));
+            	employee.setPassword(result.getString("password"));
+            	employees.add(employee);
+            }
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+		  return employees;
+	  }
+	  
+	  public int registerEmployee(Employee employee) throws ClassNotFoundException {
+	        String INSERT_USERS_SQL = "INSERT INTO employee_table" +
+	            "  (email, firstname, lastname, username, password, mi) VALUES " +
+	            " (?, ?, ?, ?, ?, ?);";
+
+	        int result = 0;
+
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+
+	            // Step 2:Create a statement using connection object
+	            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+	            preparedStatement.setString(1, employee.getEmail());
+	            preparedStatement.setString(2, employee.getFirstname());
+	            preparedStatement.setString(3, employee.getLastname());
+	            preparedStatement.setString(4, employee.getUsername());
+	            preparedStatement.setString(5, employee.getPassword());
+	            preparedStatement.setString(6, employee.getMi());
+
+	            System.out.println(preparedStatement);
+	            // Step 3: Execute the query or update query
+	            result = preparedStatement.executeUpdate();
+
+	        } catch (SQLException e) {
+	            // process sql exception
+	            printSQLException(e);
+	        }
+	        return result;
+	    }
+	  
+	  public Employee selectEmployee(int id) throws ClassNotFoundException {
+	        String INSERT_USERS_SQL = "SELECT * FROM employee_table WHERE employeeID = "+id;
+        	Employee employee = new Employee();
+
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+
+	            // Step 2:Create a statement using connection object
+	            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+
+	            System.out.println(preparedStatement);
+	            // Step 3: Execute the query or update query
+	            ResultSet result = preparedStatement.executeQuery();
+	            
+	            while(result.next()) {
+	            	employee.setFirstname(result.getString("firstname"));
+	            	employee.setLastname(result.getString("lastname"));
+	            	employee.setMi(result.getString("mi"));
+	            	employee.setEmail(result.getString("email"));
+	            	employee.setUsername(result.getString("username"));
+	            	employee.setPassword(result.getString("password"));
+	            }
+
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        return employee;
+	    }
+
+
+	    private void printSQLException(SQLException ex) {
+	        for (Throwable e: ex) {
+	            if (e instanceof SQLException) {
+	                e.printStackTrace(System.err);
+	                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+	                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+	                System.err.println("Message: " + e.getMessage());
+	                Throwable t = ex.getCause();
+	                while (t != null) {
+	                    System.out.println("Cause: " + t);
+	                    t = t.getCause();
+	                }
+	            }
+	        }
+	    }
+}
