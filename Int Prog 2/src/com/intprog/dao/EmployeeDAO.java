@@ -134,6 +134,32 @@ public class EmployeeDAO {
 	        }
 	        return employee;
 	    }
+	  
+	  public Employee updateEmployee(Employee employee) throws ClassNotFoundException {
+		String UPDATE_SQL_TEMPLATE = "UPDATE employee_table SET firstname = '%s', lastname = '%s', mi = '%s', email = '%s', username = '%s',password = '%s' WHERE employeeID = %d";
+	    String UPDATE_SQL = String.format(
+	    						UPDATE_SQL_TEMPLATE, 
+	    						employee.getFirstname(),
+	    						employee.getLastname(),
+	    						employee.getMi(),
+	    						employee.getEmail(),
+	    						employee.getUsername(),
+	    						employee.getPassword(),
+	    						employee.getEmployeeID()
+    						);
+
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+	            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL)) {
+	            System.out.println(UPDATE_SQL);
+	            preparedStatement.executeUpdate();
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        return employee;
+	    }
 
 
 	    private void printSQLException(SQLException ex) {

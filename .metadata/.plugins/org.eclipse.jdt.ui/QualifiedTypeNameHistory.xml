@@ -3,4 +3,6 @@
 <fullyQualifiedTypeName name="com.intprog.model.Employee"/>
 <fullyQualifiedTypeName name="com.intprog.dao.EmployeeDAO"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
 </qualifiedTypeNameHistroy>

@@ -3,43 +3,60 @@
 <div class="tableCon">
             <h1>Employee</h1>
             <br>
-            <table class="view-employee-table">
-            	<tr>
-            		<td>ID</td>
-            		<td>${employee.employeeID}</td>
-            	</tr>
-            	<tr>
-            		<td>First Name</td>
-            		<td>${employee.firstname}</td>
-            	</tr>
-            	<tr>
-            		<td>Last Name</td>
-            		<td>${employee.lastname}</td>
-            	</tr>
-            	<tr>
-            		<td>MI</td>
-            		<td>${employee.mi}</td>
-            	</tr>
-            	<tr>
-            		<td>Email</td>
-            		<td>${employee.email}</td>
-            	</tr>
-            	<tr>
-            		<td>Username</td>
-            		<td>${employee.username}</td>
-            	</tr>
-            	<tr>
-            		<td>Password</td>
-            		<td>${employee.password}</td>
-            	</tr>
-            	<tr>
-            		<td>Action</td>
-            		<td>
-            			<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
-							Delete					        		
-			        	</a>
-		        	</td>
-            	</tr>
-            </table>
+            <form action="<%= request.getContextPath() %>/update" method="POST" id="employee-form">
+            	<input type="hidden" name="id" value="${employee.employeeID}"/>
+	            <table class="view-employee-table">
+	            	<tr>
+	            		<td>ID</td>
+	            		<td>${employee.employeeID}</td>
+	            	</tr>
+	            	<tr>
+	            		<td>First Name</td>
+	            		<td class="inputCon">
+	            			<input value="${employee.firstname}" name="firstname"/>
+	            		</td>
+	            	</tr>
+	            	<tr>
+	            		<td>Last Name</td>
+	            		<td class="inputCon">
+	            			<input value="${employee.lastname}" name="lastname"/>
+	            		</td>
+	            	</tr>
+	            	<tr>
+	            		<td>MI</td>
+	            		<td class="inputCon">
+	            			<input value="${employee.mi}" name="mi"/>
+	            		</td>
+	            	</tr>
+	            	<tr>
+	            		<td>Email</td>
+	            		<td class="inputCon">
+	            			<input value="${employee.email}" type="email" name="email"/>
+	            		</td>
+	            	</tr>
+	            	<tr>
+	            		<td>Username</td>
+	            		<td class="inputCon">
+	            			<input value="${employee.username}" name="username"/>
+	            		</td>
+	            	</tr>
+	            	<tr>
+	            		<td>Password</td>
+	            		<td class="inputCon">
+	            			<input value="${employee.password}" name="password"/>
+	            		</td>
+	            	</tr>
+	            	<tr>
+	            		<td>Action</td>
+	            		<td>
+		            		<a class="button-link" onclick='document.querySelector("#employee-form").submit()'>						Update					        		
+				        	</a>
+	            			<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
+								Delete					        		
+				        	</a>
+			        	</td>
+	            	</tr>
+	            </table>
+            </form>
 </div>
 <jsp:include page="/WEB-INF/layout/footer.jsp" />

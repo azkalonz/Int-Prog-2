@@ -49,8 +49,7 @@ public class RegisterServlet extends HttpServlet {
         employee.setUsername(username);
         employee.setPassword(password);
         employee.setEmail(email);
-        employee.setMi(mi);
-        
+        employee.setMi(mi);        
 
         try {
         	
