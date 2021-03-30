@@ -1,0 +1,51 @@
+<jsp:include page="/WEB-INF/layout/header.jsp"/>
+<main>
+        <div class="container">
+            <div class="nav">
+                <a href="./home.html">
+                    <div class="links active">My Profile</div>
+                </a>
+                <a href="./user.html">
+                    <div class="links">Add User</div>
+                </a>
+                <a href="./users.html">
+                    <div class="links">View Users</div>
+                </a>
+            </div>
+
+            <div class="content">
+                <form>                    
+                    <div class="infos">
+                        <span>User ID</span>
+                        <input type="text" disabled>
+                    </div>
+                    <div class="infos">
+                        <span>Lastname</span>
+                        <input type="text">
+                    </div>                    
+                    <div class="infos">
+                        <span>Firstname</span>
+                        <input type="text">
+                    </div>                   
+                    <div class="infos">
+                        <span>Middle Initial</span>
+                        <input type="text">
+                    </div>                   
+                    <div class="infos">
+                        <span>Email</span>
+                        <input type="text">
+                    </div>                   
+                    <div class="infos">
+                        <span>Username</span>
+                        <input type="text">
+                    </div>                   
+                    <div class="infos">
+                        <span>Password</span>
+                        <input type="text">
+                    </div>
+                    <input class="button" type="submit" value="Edit">
+                </form>
+            </div>
+        </div>
+    </main>
+<jsp:include page="/WEB-INF/layout/footer.jsp"/>

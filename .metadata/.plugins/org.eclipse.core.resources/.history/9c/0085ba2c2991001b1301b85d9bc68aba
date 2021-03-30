@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  
+  <script>
+  	const setName = ()=>{
+  		const user = JSON.parse(window.localStorage['user']);
+  		if(window.localStorage['user'] && user){
+  			$('#name').text(user.lastname+", "+user.firstname);
+  		} else {
+  			window.location = "<%=request.getContextPath()%>/login";
+  		}
+  	}
+  </script>
+</head>
+<body onload="setName()">
+	<header>
+	        <div class="container">
+	            <div class="logo-con">
+	                <img src="<%=request.getContextPath()%>/assets/logo/horizontal.png">
+	            </div>
+	            <div class="account-con">
+	                <span id="name"></span>
+	                <a href="javascript:(function(){
+	                	window.localStorage.clear();
+	                	window.location = '/Int_Prog_2/login';
+	                })()">
+	                    <div class="button">Logout</div>
+	                </a>
+	            </div>
+	        </div>
+	    </header>

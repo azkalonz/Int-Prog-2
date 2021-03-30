@@ -197,4 +197,35 @@ public class EmployeeDAO {
 	            printSQLException(e);
 	        }
 	    }
+	    
+	    public Employee authenticate(String username, String upassword) throws ClassNotFoundException {
+	        String LOGIN_SQL = "SELECT * FROM employee_table WHERE username = '"+username+"' AND password = '"+upassword+"'";
+	        Employee employee = new Employee();
+
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+	        		
+	            PreparedStatement preparedStatement = connection.prepareStatement(LOGIN_SQL)) {
+
+	            System.out.println(preparedStatement);
+	            
+	            ResultSet result = preparedStatement.executeQuery();
+	            
+	            while(result.next()) {
+	            	employee.setEmployeeID(result.getInt("employeeID"));
+	            	employee.setFirstname(result.getString("firstname"));
+	            	employee.setLastname(result.getString("lastname"));
+	            	employee.setMi(result.getString("mi"));
+	            	employee.setEmail(result.getString("email"));
+	            	employee.setUsername(result.getString("username"));
+	            	employee.setPassword(result.getString("password"));
+	            }
+	            
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        return employee;
+	    }
 }

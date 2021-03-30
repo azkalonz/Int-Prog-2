@@ -1,4 +1,0 @@
-<jsp:include page="/WEB-INF/layout/header.jsp" />
-${employee.firstname}
-${employee.lastname}
-<jsp:include page="/WEB-INF/layout/footer.jsp" />

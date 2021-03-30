@@ -6,36 +6,39 @@
 <meta charset="ISO-8859-1">
 <title>Employee</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  
+  <script>
+  	const setName = ()=>{
+  		if(!!window.localStorage['user']){
+  			const user = JSON.parse(window.localStorage['user']);
+  	  		if(user){
+  	  			$('#name').text(user.lastname+", "+user.firstname);
+  	  		}
+  		}
+  		 else {
+  			window.location = "<%=request.getContextPath()%>/login";
+  		}
+  	}
+  </script>
 </head>
-<body>
-<header>
-        <div class="container">
-            <h1>OPEN SOURCE</h1>
-            <div class="namesCon">
-                <div class="names">
-                    <h3>Judaya</h3>
-                    <span>Mark Joseph</span>
-                </div>
-                <div class="names">
-                    <h3>Cabrera</h3>
-                    <span>Kimberly</span>
-                </div>
-                <div class="names">
-                    <h3>Rosell</h3>
-                    <span>Eve Grace</span>
-                </div>
-                <div class="names">
-                    <h3>Ayade</h3>
-                    <span>Mark Raymond</span>
-                </div>
-            </div>            
-        </div>
-    </header>
-    <div class="navCon">
-        <div class="container">
-            <a class="button" href="<%=request.getContextPath()%>/register">Register Employee</a>
-            <a class="button" href="<%=request.getContextPath()%>/employee">View Employees</a>
-        </div>
-    </div>
-    
-    <div class="thecontent">
+<body onload="setName()">
+	<header>
+	        <div class="container">
+	            <div class="logo-con">
+	                <img src="<%=request.getContextPath()%>/assets/logo/horizontal.png">
+	            </div>
+	            <div class="account-con">
+	                <span id="name"></span>
+	                <a href="javascript:(function(){
+	                	window.localStorage.clear();
+	                	window.location = '/Int_Prog_2/login';
+	                })()">
+	                    <div class="button">Logout</div>
+	                </a>
+	            </div>
+	        </div>
+	    </header>

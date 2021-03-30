@@ -1,0 +1,17 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+
+<%= request.getRequestURI()  %>
+${fn:indexOf("register.jsp, "register.jsp")}
+<div class="nav">
+    <a href="<%=request.getContextPath()%>">
+        <div class="links">My Profile</div>
+    </a>
+    <a href="<%=request.getContextPath()%>/register">
+        <div class="links<c:if test="${1==1}"> active</c:if>">Add User</div>
+    </a>
+    <a href="./users.html">
+        <div class="links">View Users</div>
+    </a>
+</div>

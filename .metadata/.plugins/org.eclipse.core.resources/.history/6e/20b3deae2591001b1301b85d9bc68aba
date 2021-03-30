@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
+</head>
+<body>
+	<header>
+	        <div class="container">
+	            <div class="logo-con">
+	                <img src="<%=request.getContextPath()%>/assets/logo/horizontal.png">
+	            </div>
+	            <div class="account-con">
+	                <span>Ayade, Mark Raymond</span>
+	                <a href="javascript:(function(){
+	                	window.localStorage.clear();
+	                	window.location = '/Int_Prog_2/login';
+	                })()">
+	                    <div class="button">Logout</div>
+	                </a>
+	            </div>
+	        </div>
+	    </header>

@@ -1,0 +1,11 @@
+<div class="nav">
+    <a href="./home.html">
+        <div class="links">My Profile</div>
+    </a>
+    <a href="./user.html">
+        <div class="links active">Add User</div>
+    </a>
+    <a href="./users.html">
+        <div class="links">View Users</div>
+    </a>
+</div>
