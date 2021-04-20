@@ -270,7 +270,7 @@ main .container .content .button:hover {
 
 main .container .content {
   max-height: 800px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 main .container .content table {
@@ -298,7 +298,8 @@ main .container .content table tbody tr {
 main .container .content table tbody tr td:last-child {
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 10px;
+  line-height: 29px;
 }
 
 main .container .content table tbody .button-action {
@@ -329,4 +330,78 @@ main .container .content table tbody .button-action {
 
 .red:hover {
   background: rgb(194, 4, 42);
+}
+
+.datetoday {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.datetoday h1 {
+  margin-top: 20px;
+  font-size: 50px;
+}
+
+.timeInAndOut {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.timeInput {
+  width: 300px;
+  height: 60px;
+  padding-left: 20px;
+  margin: 0 10px;
+  font-family: "Montserrat";
+  font-size: 20px;
+  color: gray;
+}
+
+.buttonCon {
+  display: flex;
+  justify-content: center;
+}
+
+.timeButton {
+  width: 300px;
+  height: 80px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+.current {
+  background: rgb(220, 46, 69);
+  color: white;
+}
+
+.dtrRecordCon {
+  margin-top: 40px;
+  width: 700px;
+  max-height: 900px;
+}
+
+.dtrRecordCon table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.dtrRecordCon table thead th {
+  height: 50px;
+  background: rgb(184, 179, 179);
+}
+
+.dtrRecordCon table tbody tr {
+  height: 50px;
+}
+
+.dtrRecordCon table tbody tr td {
+  color: rgba(220, 46, 69, 0.742);
+  border-bottom: 1px solid rgba(154, 150, 150, 0.803);
 }

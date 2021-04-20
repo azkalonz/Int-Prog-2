@@ -2,23 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="button" key="selection"/>
+		<item value="overflow" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="overflow"/>
+			<item value="main .container .content"/>
+			<item value="UpdateEmployee"/>
+			<item value="a {"/>
+			<item value=".container"/>
+			<item value="header"/>
+			<item value="getconnec"/>
+			<item value="get"/>
+			<item value="employeeDAO"/>
+			<item value="delete"/>
 			<item value="button"/>
 			<item value="70px"/>
 			<item value="100vh"/>
 			<item value="body"/>
 			<item value="rgb(204, 238, 242)"/>
-			<item value="registerEmployee"/>
-			<item value="employee.jsp"/>
-			<item value=".navCon .container .button"/>
-			<item value=".button"/>
-			<item value="tableCon"/>
-			<item value="employees"/>
 		</list>
 		<list key="replacehistory">
 		</list>

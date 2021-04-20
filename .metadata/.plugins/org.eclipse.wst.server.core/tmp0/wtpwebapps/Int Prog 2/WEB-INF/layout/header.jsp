@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Employee</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
+<script src="<%=request.getContextPath()%>/script/moment.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -20,7 +21,8 @@
   	  		}
   		}
   		 else {
-  			window.location = "<%=request.getContextPath()%>/login";
+  			 if(window.location.pathname.indexOf("register")<0)
+  				window.location = "<%=request.getContextPath()%>/login";
   		}
   	}
   </script>
@@ -29,7 +31,7 @@
 	<header>
 	        <div class="container">
 	            <div class="logo-con">
-	                <img src="<%=request.getContextPath()%>/assets/logo/horizontal.png">
+	                <a href="<%=request.getContextPath()%>?page=home"><img src="<%=request.getContextPath()%>/assets/logo/horizontal.png"></a>
 	            </div>
 	            <div class="account-con">
 	                <span id="name"></span>

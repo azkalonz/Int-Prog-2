@@ -33,7 +33,7 @@
                         <span>Password</span>
                         <input type="text" value="${employee.password}" name="password">
                     </div>
-                    <input class="button" type="submit" value="Edit User">
+                    <input class="button" type="submit" value="Save">
                 </form>
             </div>
         </div>

@@ -1,0 +1,37 @@
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+  <main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp" />
+            <div class="content">
+                <form action="<%= request.getContextPath() %>/register" method="post">
+                <input type="hidden" value="" name="employeeID"/>
+                    <div class="infos">
+                        <span>Lastname</span>
+                        <input type="text" name="lastname" required>
+                    </div>                    
+                    <div class="infos">
+                        <span>Firstname</span>
+                        <input type="text" name="firstname" required>
+                    </div>                   
+                    <div class="infos">
+                        <span>Middle Initial</span>
+                        <input type="text" name="mi">
+                    </div>                   
+                    <div class="infos">
+                        <span>Email</span>
+                        <input type="text" name="email" required>
+                    </div>                   
+                    <div class="infos">
+                        <span>Username</span>
+                        <input type="text" name="username" required>
+                    </div>                   
+                    <div class="infos">
+                        <span>Password</span>
+                        <input type="password" name="password" required>
+                    </div>
+                    <input class="button" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </main>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

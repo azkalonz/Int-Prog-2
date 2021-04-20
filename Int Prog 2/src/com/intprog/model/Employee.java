@@ -2,10 +2,20 @@ package com.intprog.model;
 
 public class Employee {
 	private String firstname,lastname,email,username,password,mi;
+	private DTRModel DTR;
+	
 	public int employeeID;
 	
 	public int getEmployeeID() {
 		return employeeID;
+	}
+
+	public DTRModel getDTR() {
+		return DTR;
+	}
+
+	public void setDTR(DTRModel DTR) {
+		this.DTR = DTR;
 	}
 
 	public void setEmployeeID(int employeeID) {

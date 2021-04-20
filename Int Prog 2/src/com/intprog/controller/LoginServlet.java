@@ -1,6 +1,7 @@
 package com.intprog.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,11 +45,14 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Employee theEmployee = employeeDao.authenticate(username, password);
+            
             if(theEmployee.employeeID > 0) {
-            	request.setAttribute("user", theEmployee);		
+            	
+            	request.setAttribute("user", theEmployee);	
+            	request.setAttribute("DTR", theEmployee.getDTR().getDtrRecords());
             	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
                 dispatcher.forward(request, response);
-
+                
             } else {
             	if(username.length() > 0)
             		getServletContext().setAttribute("error", "Invalid User/Password");		

@@ -1,5 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="com.mysql.cj.xdevapi.JsonArray"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 
 <jsp:include page="/WEB-INF/layout/header.jsp"/>
 
@@ -15,6 +19,13 @@
     		if(!window.localStorage['user'])
     			window.location = "<%=request.getContextPath()%>/login";
     	} else {
+    		const records = [];
+    		<c:forEach items="${DTR}" var="record">
+				records.push({
+					"date_in": "${record.date_in}",
+					"date_out": "${record.date_out}"
+				})
+			</c:forEach>
     		window.localStorage['user'] = JSON.stringify({
         		employeeID: "${user.employeeID}",
         		lastname: "${user.lastname}",
@@ -23,12 +34,17 @@
         		email: "${user.email}",
         		username: "${user.username}",
         		password: "${user.password}",
+        		records
         	});
-
-        	window.location = "<%=request.getContextPath()%>?page=home";
+			const redirect = "${redirect}";
+			if(!!redirect){
+				window.location = redirect;
+			} else {
+				window.location = "<%=request.getContextPath()%>?page=home";
+			}
     	}
     </script>
-
+    
 <main>
         <div class="container">
             <jsp:include page="/WEB-INF/layout/nav.jsp" />
@@ -73,9 +89,9 @@
     	if(user){
     		$('input[type=button]').attr('onclick',"window.location = '<%= request.getContextPath() %>/employee?id='+user.employeeID");
     		Object.keys(user).map((key,i)=>{
-    			$("input:eq("+i+")").val(user[key]);
-    			$("input:eq("+i+")").attr('name',key);
-    			$("input:eq("+i+")").prop('disabled',true);
+    			$("input:eq("+i+"):not(.button)").val(user[key]);
+    			$("input:eq("+i+"):not(.button)").attr('name',key);
+    			$("input:eq("+i+"):not(.button)").prop('disabled',true);
     		})
     	}
     </script>

@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:link {
+	text-decoration: none;
+	color: #000;
+}
+
+body {
+  font-family: "Montserrat";
+  font-size: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 120px;
+  position: relative;
+  border-bottom: 2px solid rgb(220, 46, 69);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  max-width: 1300px;
+}
+
+header .container .logo-con {
+  padding-top: 5px;
+}
+
+header .container .logo-con img {
+  height: 100px;
+}
+
+header .container .account-con {
+  display: flex;
+  align-items: center;
+}
+
+header .account-con .button {
+  width: 90px;
+  height: 30px;
+  margin-left: 20px;
+  border: none;
+  background: rgb(220, 46, 69);
+  box-shadow: 0 1px 2px 0 rgba(122, 7, 22, 0.783),
+    0 1px 2px 0 rgba(122, 7, 22, 0.783);
+  cursor: pointer;
+  color: white;
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 2px;
+  line-height: 30px;
+  text-align: center;
+}
+
+header .account-con .button:hover {
+  background: rgb(187, 32, 53);
+}
+
+.login-container {
+  background: rgb(220, 46, 69);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Montserrat";
+  color: rgb(22, 22, 22);
+}
+
+.login-container > .container {
+  position: relative;
+  background: white;
+  width: 85%;
+  max-width: 1024px;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 0 2px 4px 0 rgb(80, 12, 21), 0 6px 10px 0 rgb(80, 12, 21);
+  padding: 60px 5px;
+}
+
+.login-container > .container .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 3;
+}
+
+.logo-container img {
+  width: 200px;
+  padding-bottom: 35px;
+}
+
+.logo-container span {
+  color: rgb(220, 46, 69);
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.container .form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex: 2;
+}
+
+.form-container h1 {
+  margin-bottom: 20px;
+}
+
+.form-container .input-con {
+  margin-bottom: 20px;
+}
+
+.form-container .input-con input {
+  height: 45px;
+  width: 300px;
+  font-family: "Montserrat";
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(233, 129, 143);
+}
+
+.form-container button {
+  width: 150px;
+  height: 50px;
+  background: rgb(220, 46, 69);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(122, 7, 22, 0.783),
+    0 1px 2px 0 rgba(122, 7, 22, 0.783);
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+
+.form-container button:hover {
+  background: rgb(187, 32, 53);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+main .container {
+  width: 95%;
+  max-width: 1300px;
+  display: flex;
+  justify-content: center;
+}
+
+main .container .nav {
+  flex: 2;
+  margin-right: 10px;
+}
+
+main .container .nav .links {
+  padding-left: 40px;
+  height: 60px;
+  line-height: 60px;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+.active {
+  background: rgb(220, 46, 69);
+  color: white;
+}
+
+main .container .nav .links:hover {
+  background: rgb(220, 46, 69);
+  color: white;
+  transition: 0.4s;
+}
+
+main .container .content {
+  flex: 8;
+  display: flex;
+  justify-content: center;
+}
+
+main .container .content .infos {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+main .container .content .infos span {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+main .container .content .infos input {
+  width: 600px;
+  height: 40px;
+  border-radius: 2px;
+  border: 1px solid rgb(233, 129, 143);
+  padding: 0 10px;
+}
+
+main .container .content .button {
+  width: 400px;
+  height: 70px;
+  background: rgb(220, 46, 69);
+  border: none;
+  margin-top: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+main .container .content .button:hover {
+  background: rgb(187, 32, 53);
+}
+
+main .container .content .infos {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+main .container .content .infos span {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+main .container .content .infos input {
+  width: 600px;
+  height: 40px;
+  border-radius: 2px;
+  border: 1px solid rgb(233, 129, 143);
+  padding: 0 10px;
+}
+
+main .container .content .button {
+  width: 400px;
+  height: 70px;
+  background: rgb(220, 46, 69);
+  border: none;
+  margin-top: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+main .container .content .button:hover {
+  background: rgb(187, 32, 53);
+}
+
+main .container .content {
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+main .container .content table {
+  width: 100%;
+  margin: 0 15px;
+  text-align: center;
+  border-spacing: 0;
+}
+
+main .container .content table thead {
+  background: rgb(220, 46, 69);
+}
+
+main .container .content table thead th {
+  height: 60px;
+  column-gap: 0;
+  color: white;
+}
+
+main .container .content table tbody tr {
+  height: 50px;
+  background: rgba(247, 244, 244, 0.375);
+}
+
+main .container .content table tbody tr td:last-child {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+main .container .content table tbody .button-action {
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin: 0 5px;
+  font-size: 12px;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.orange {
+  background: coral;
+  box-shadow: 0px 0px 2px -1px rgba(230, 63, 2, 0.443);
+}
+
+.red {
+  background: crimson;
+  box-shadow: 0px 0px 2px -1px rgba(199, 2, 41, 0.653);
+}
+
+.orange:hover {
+  background: rgb(248, 95, 39);
+}
+
+.red:hover {
+  background: rgb(194, 4, 42);
+}
+
+.datetoday {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.datetoday h1 {
+  margin-top: 20px;
+  font-size: 50px;
+}
+
+.timeInAndOut {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.timeInput {
+  width: 300px;
+  height: 60px;
+  padding-left: 20px;
+  margin: 0 10px;
+  font-family: "Montserrat";
+  font-size: 20px;
+  color: gray;
+}
+
+.buttonCon {
+  display: flex;
+  justify-content: center;
+}
+
+.timeButton {
+  width: 300px;
+  height: 80px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+.current {
+  background: rgb(220, 46, 69);
+  color: white;
+}
+
+.dtrRecordCon {
+  margin-top: 40px;
+  width: 700px;
+  max-height: 900px;
+}
+
+.dtrRecordCon table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.dtrRecordCon table thead th {
+  height: 50px;
+  background: rgb(184, 179, 179);
+}
+
+.dtrRecordCon table tbody tr {
+  height: 50px;
+}
+
+.dtrRecordCon table tbody tr td {
+  color: rgba(220, 46, 69, 0.742);
+  border-bottom: 1px solid rgba(154, 150, 150, 0.803);
+  padding: 50px;
+  line-height: 29px;
+}

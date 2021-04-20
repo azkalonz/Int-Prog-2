@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import com.intprog.model.DTRModel;
 import com.intprog.model.Employee;
 
 public class EmployeeDAO {
@@ -201,6 +203,7 @@ public class EmployeeDAO {
 	    public Employee authenticate(String username, String upassword) throws ClassNotFoundException {
 	        String LOGIN_SQL = "SELECT * FROM employee_table WHERE username = '"+username+"' AND password = '"+upassword+"'";
 	        Employee employee = new Employee();
+	        DTRModel DTR = new DTRModel();
 
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -214,6 +217,7 @@ public class EmployeeDAO {
 	            ResultSet result = preparedStatement.executeQuery();
 	            
 	            while(result.next()) {
+	            	DTR.setDtrRecords(this.fetchDTRRecords(result.getInt("employeeID")));
 	            	employee.setEmployeeID(result.getInt("employeeID"));
 	            	employee.setFirstname(result.getString("firstname"));
 	            	employee.setLastname(result.getString("lastname"));
@@ -221,11 +225,66 @@ public class EmployeeDAO {
 	            	employee.setEmail(result.getString("email"));
 	            	employee.setUsername(result.getString("username"));
 	            	employee.setPassword(result.getString("password"));
+	    	        employee.setDTR(DTR);
 	            }
 	            
 	        } catch (SQLException e) {
 	            printSQLException(e);
 	        }
 	        return employee;
+	    }
+	    
+	    public ArrayList fetchDTRRecords(int employeeID) throws ClassNotFoundException {
+	    	String FETCH_DTR_SQL = "SELECT * FROM dtr_table WHERE employeeID = "+employeeID;
+	        ArrayList<HashMap<String,String>> records = new ArrayList<HashMap<String,String>>();
+	        
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+	        		
+	            PreparedStatement preparedStatement = connection.prepareStatement(FETCH_DTR_SQL)) {
+	            System.out.println(preparedStatement);
+	            ResultSet result = preparedStatement.executeQuery();
+	            
+	            while(result.next()) {
+	    	        HashMap<String,String> record = new HashMap<String,String>();
+	    	        record.put("date_in", result.getString("date_in"));
+	    	        record.put("date_out", result.getString("date_out"));
+	    	        records.add(record);
+	            }
+	            
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        
+	    	return records;
+	    }
+	    
+	    public Employee recordTimeIn(String dateTime, int employeeID) throws ClassNotFoundException {
+	    	String RECORD_TIME_IN_SQL = "INSERT INTO dtr_table(date_in, employeeID) VALUES ('"+dateTime+"', "+employeeID+")";
+	    	Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+	            PreparedStatement preparedStatement = connection.prepareStatement(RECORD_TIME_IN_SQL)) {
+	            System.out.println(preparedStatement);
+	            preparedStatement.executeUpdate();
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        return null;
+	    }
+	    
+	    public Employee recordTimeOut(String dateTime, int employeeID) throws ClassNotFoundException {
+	    	String RECORD_TIME_OUT_SQL = "UPDATE dtr_table SET date_out = '"+dateTime+"' WHERE id = (select * from (select max(id) from dtr_table where employeeID = "+employeeID+" AND date_out IS NULL) as t)";
+	    	try (Connection connection = DriverManager
+		            .getConnection(url,user,password);
+	            PreparedStatement preparedStatement = connection.prepareStatement(RECORD_TIME_OUT_SQL)) {
+	            System.out.println(preparedStatement);
+	            preparedStatement.executeUpdate();
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        return null;
 	    }
 }

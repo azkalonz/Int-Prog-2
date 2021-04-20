@@ -2,7 +2,6 @@
   <main>
         <div class="container">
             <jsp:include page="/WEB-INF/layout/nav.jsp" />
-
             <div class="content">
                 <form action="<%= request.getContextPath() %>/register" method="post">
                     <div class="infos">
@@ -27,7 +26,7 @@
                     </div>                   
                     <div class="infos">
                         <span>Password</span>
-                        <input type="text" name="password" required>
+                        <input type="password" name="password" required>
                     </div>
                     <input class="button" type="submit" value="Save">
                 </form>

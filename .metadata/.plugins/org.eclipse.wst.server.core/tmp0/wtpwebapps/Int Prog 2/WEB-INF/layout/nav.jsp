@@ -12,4 +12,7 @@
     <a href="<%=request.getContextPath()%>/employee?page=view">
         <div class="links<c:if test="${page=='view'}"> active</c:if>">View Users</div>
     </a>
+    <a href="<%=request.getContextPath()%>/dtr?page=dtr">
+        <div class="links<c:if test="${page=='dtr'}"> active</c:if>">DTR</div>
+    </a>
 </div>
