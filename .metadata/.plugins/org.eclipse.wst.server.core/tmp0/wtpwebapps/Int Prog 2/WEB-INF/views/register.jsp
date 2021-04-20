@@ -1,34 +1,36 @@
 <jsp:include page="/WEB-INF/layout/header.jsp" />
-  <div class="formCon">
-     <form action="<%= request.getContextPath() %>/register" method="post">
-         <h1>User Registration</h1>
-         <br>
-         <div class="inputCon">
-             <span>First Name: </span>
-             <input type="text" name="firstname" required>
-         </div>
-         <div class="inputCon">
-             <span>Last Name:</span>
-             <input type="text" name="lastname" required>
-         </div>
-         <div class="inputCon">
-             <span>Middle Initial: </span>
-             <input type="text" name="mi" required>
-         </div>
-         <div class="inputCon">
-             <span>Email: </span>
-             <input type="email" name="email" required>
-         </div>
-         <div class="inputCon">
-             <span>Username: </span>
-             <input type="text" name="username" required>
-         </div>
-         <div class="inputCon">
-             <span>Password: </span>
-             <input type="password" name="password" required>
-         </div>
-         <br>
-         <button>Register</button>
-     </form>
- </div>
+  <main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp" />
+            <div class="content">
+                <form action="<%= request.getContextPath() %>/register" method="post">
+                    <div class="infos">
+                        <span>Lastname</span>
+                        <input type="text" name="lastname" required>
+                    </div>                    
+                    <div class="infos">
+                        <span>Firstname</span>
+                        <input type="text" name="firstname" required>
+                    </div>                   
+                    <div class="infos">
+                        <span>Middle Initial</span>
+                        <input type="text" name="mi">
+                    </div>                   
+                    <div class="infos">
+                        <span>Email</span>
+                        <input type="text" name="email" required>
+                    </div>                   
+                    <div class="infos">
+                        <span>Username</span>
+                        <input type="text" name="username" required>
+                    </div>                   
+                    <div class="infos">
+                        <span>Password</span>
+                        <input type="password" name="password" required>
+                    </div>
+                    <input class="button" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </main>
 <jsp:include page="/WEB-INF/layout/footer.jsp" />

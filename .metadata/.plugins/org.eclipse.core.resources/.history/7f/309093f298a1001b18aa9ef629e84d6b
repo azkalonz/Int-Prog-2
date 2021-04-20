@@ -1,0 +1,23 @@
+(()=>{
+	const getUser = ()=>JSON.parse(localStorage['user']);
+	const updateDateToday = ()=>{
+		$("#date-today").text(moment().format("LLL"));
+	}
+	window.timeTicker = setInterval(()=>{
+		updateDateToday();
+	},60000);
+	updateDateToday();
+	
+	$("[name=employeeID]").val(getUser().employeeID);
+	
+	const printDTRRecords = ()=>{
+		$("#dtr-body").html(`
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+		
+		`)
+	}
+})();

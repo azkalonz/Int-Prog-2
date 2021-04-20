@@ -40,6 +40,7 @@ public class EmployeeServlet extends HttpServlet {
 			emp = employeeDAO.selectEmployee(Integer.parseInt(id));
 			if(emp.employeeID>0) {
 				getServletContext().setAttribute("employee", emp);		
+				getServletContext().setAttribute("page", "view");	
 				getServletContext().getRequestDispatcher("/WEB-INF/views/employee.jsp").forward(request, response);
 			} else {
 				response.sendRedirect(request.getContextPath()+"/employee");

@@ -1,0 +1,5 @@
+(()=>{
+	window.timeTicker = setInterval(()=>{
+		$("#date-today").text(moment().format("LLL"));
+	},60000);
+})();

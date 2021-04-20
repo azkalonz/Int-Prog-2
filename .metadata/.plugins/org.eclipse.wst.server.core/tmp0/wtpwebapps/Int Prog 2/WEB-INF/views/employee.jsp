@@ -1,45 +1,42 @@
 <jsp:include page="/WEB-INF/layout/header.jsp" />
 
-<div class="tableCon">
-            <h1>Employee</h1>
-            <br>
-            <table class="view-employee-table">
-            	<tr>
-            		<td>ID</td>
-            		<td>${employee.employeeID}</td>
-            	</tr>
-            	<tr>
-            		<td>First Name</td>
-            		<td>${employee.firstname}</td>
-            	</tr>
-            	<tr>
-            		<td>Last Name</td>
-            		<td>${employee.lastname}</td>
-            	</tr>
-            	<tr>
-            		<td>MI</td>
-            		<td>${employee.mi}</td>
-            	</tr>
-            	<tr>
-            		<td>Email</td>
-            		<td>${employee.email}</td>
-            	</tr>
-            	<tr>
-            		<td>Username</td>
-            		<td>${employee.username}</td>
-            	</tr>
-            	<tr>
-            		<td>Password</td>
-            		<td>${employee.password}</td>
-            	</tr>
-            	<tr>
-            		<td>Action</td>
-            		<td>
-            			<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
-							Delete					        		
-			        	</a>
-		        	</td>
-            	</tr>
-            </table>
-</div>
+<main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp">
+            	<jsp:param name="page" value="${page}" />
+            </jsp:include>
+
+            <div class="content">
+                <form action="<%= request.getContextPath() %>/update" method="POST" id="employee-form">  
+                	<input type="hidden" name="id" value="${employee.employeeID}"/>  
+                    <div class="infos">
+                        <span>Lastname</span>
+                        <input type="text" value="${employee.lastname}" name="lastname">
+                    </div>                    
+                    <div class="infos">
+                        <span>Firstname</span>
+                        <input type="text" value="${employee.firstname}" name="firstname">
+                    </div>                   
+                    <div class="infos">
+                        <span>Middle Initial</span>
+                        <input type="text" value="${employee.mi}" name="mi">
+                    </div>                   
+                    <div class="infos">
+                        <span>Email</span>
+                        <input type="text" value="${employee.email}" name="email">
+                    </div>                   
+                    <div class="infos">
+                        <span>Username</span>
+                        <input type="text" value="${employee.username}" name="username">
+                    </div>                   
+                    <div class="infos">
+                        <span>Password</span>
+                        <input type="text" value="${employee.password}" name="password">
+                    </div>
+                    <input class="button" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </main>
+
 <jsp:include page="/WEB-INF/layout/footer.jsp" />

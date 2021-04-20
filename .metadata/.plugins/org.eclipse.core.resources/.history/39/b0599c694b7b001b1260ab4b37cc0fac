@@ -1,7 +1,0 @@
-<jsp:include page="/WEB-INF/layout/header.jsp" />
-
-<div class="tableCon">
-            <h1>Employee</h1>
-            <br>
-</div>
-<jsp:include page="/WEB-INF/layout/footer.jsp" />

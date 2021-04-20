@@ -1,45 +1,48 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="/WEB-INF/layout/header.jsp" />
+<main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp" />
 
-<div class="tableCon">
-            <h1>Employees</h1>
-            <br>
-            <c:if test="${empty employees}">
-			    No employees yet.<br/><br/> <a class="button-link" href="<%=request.getContextPath() %>/register">Register now</a>
-			</c:if>
-			
-			<c:if test="${not empty employees}">
-	            <table id="theTable">
-	                <thead>
-	                    <tr>
-	                        <th>User ID</th>
+            <div class="content">
+	            <c:if test="${empty employees}">
+				    No employees yet.<br/><br/> <a class="button-link" href="<%=request.getContextPath() %>/register">Register now</a>
+				</c:if>
+				
+	            <c:if test="${not empty employees}">
+	                <table>
+	                    <thead>
+	                        <th>User Id</th>
 	                        <th>Name</th>
 	                        <th>Email</th>
 	                        <th>Username</th>
-	                        <th>Action</th>
-	                    </tr>
-	                </thead>
-	                <tbody>
-	                    <c:forEach items="${employees}" var="employee">
-						    <tr>      
-						        <td>${employee.employeeID}</td>
-						        <td>${employee.firstname} ${employee.lastname}</td>
-						        <td>${employee.email}</td>
-						        <td>${employee.username}</td>
-						        <td>
-						        	<a class="button-link" href="?id=${employee.employeeID}">
-						        		View
-						        	</a>
-						        	<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
-						        		Delete					        		
-						        	</a>
-						        </td>
-						    </tr>
-						</c:forEach>
-	                </tbody>
-	            </table>
-            </c:if>
+	                        <th>Actions</th>
+	                    </thead>
+	                    <tbody>
+	                        <c:forEach items="${employees}" var="employee">
+							    <tr>      
+							        <td>${employee.employeeID}</td>
+							        <td>${employee.firstname} ${employee.lastname}</td>
+							        <td>${employee.email}</td>
+							        <td>${employee.username}</td>
+							        <td>
+							        	<a class="button-link" href="?id=${employee.employeeID}">
+							        		<div class="button-action orange">Edit</div>
+							        	</a>
+							        	<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
+							        		<div class="button-action red">
+							        			Delete
+							        		</div>					        		
+							        	</a>
+							        </td>
+							    </tr>
+							</c:forEach>
+	                    </tbody>
+	                </table>
+                </c:if>
+            </div>
         </div>
+    </main>
 
 <jsp:include page="/WEB-INF/layout/footer.jsp" />
