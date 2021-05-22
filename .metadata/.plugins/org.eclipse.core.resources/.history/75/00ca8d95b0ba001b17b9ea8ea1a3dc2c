@@ -1,0 +1,76 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+	<main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp" />
+            
+             <div class="content">
+                <div class="payroll">
+                    <h1>Pay Roll</h1>
+                    <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+
+<script>
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
+};
+console.log()
+$(function() {
+	let endDate = getUrlParameter("dateEnd");
+	let startDate = getUrlParameter("dateStart");
+	
+	
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left',
+	startDate,
+	endDate
+  }, function(start, end, label) {
+    window.location = "/Int_Prog_2/report?page=report&id=${employee.employeeID}&dateStart="+start.format('M/DD/YYYY')+"&dateEnd="+end.format('M/DD/YYYY')
+  });
+});
+</script>
+
+                    <br><br>
+                    <table>
+                        <thead>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>No. of Hours</th>
+                            <th>Rate per Hour</th>
+                            <th>Pay</th>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${reports}" var="report">
+							<tr>
+								<td>${employee.employeeID}</td>
+								<td>${employee.firstname} ${employee.lastname}</td>
+								<td class="no-hours" data-start="${report['date_in']}" data-end="${report['date_out']}"></td>
+								<td >${employee.ratePerHour}</td>
+								<td class="pay" data-start="${report['date_in']}" data-end="${report['date_out']}" data-rate="${employee.ratePerHour}"></td>
+							</tr>
+						</c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+    	$('.no-hours').each(function(){
+    		const hours = moment($(this).attr('data-end')).diff(moment($(this).attr('data-start')));
+    		console.log($(this.attr('data-end')), ' ',moment($(this).attr('data-start')))
+    		$(this).text(moment.duration(hours).asHours());
+    	})
+    </script>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

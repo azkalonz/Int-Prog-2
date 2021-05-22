@@ -40,6 +40,8 @@ public class EmployeeDAO {
             	employee.setEmail(result.getString("email"));
             	employee.setUsername(result.getString("username"));
             	employee.setPassword(result.getString("password"));
+            	employee.setDesignation(result.getString("designation"));
+            	employee.setRatePerHour(result.getFloat("rate_per_hour"));
             	employees.add(employee);
             }
 
@@ -129,6 +131,8 @@ public class EmployeeDAO {
 	            	employee.setEmail(result.getString("email"));
 	            	employee.setUsername(result.getString("username"));
 	            	employee.setPassword(result.getString("password"));
+	            	employee.setDesignation(result.getString("designation"));
+	            	employee.setRatePerHour(result.getFloat("rate_per_hour"));
 	            }
 
 	        } catch (SQLException e) {
@@ -138,7 +142,7 @@ public class EmployeeDAO {
 	    }
 	  
 	  public Employee updateEmployee(Employee employee) throws ClassNotFoundException {
-		String UPDATE_SQL_TEMPLATE = "UPDATE employee_table SET firstname = '%s', lastname = '%s', mi = '%s', email = '%s', username = '%s',password = '%s' WHERE employeeID = %d";
+		String UPDATE_SQL_TEMPLATE = "UPDATE employee_table SET firstname = '%s', lastname = '%s', mi = '%s', email = '%s', username = '%s',password = '%s', designation = '%s', rate_per_hour = %.2f WHERE employeeID = %d";
 	    String UPDATE_SQL = String.format(
 	    						UPDATE_SQL_TEMPLATE, 
 	    						employee.getFirstname(),
@@ -147,6 +151,8 @@ public class EmployeeDAO {
 	    						employee.getEmail(),
 	    						employee.getUsername(),
 	    						employee.getPassword(),
+	    						employee.getDesignation(),
+	    						employee.getRatePerHour(),
 	    						employee.getEmployeeID()
     						);
 
@@ -258,6 +264,32 @@ public class EmployeeDAO {
 	        }
 	        
 	    	return records;
+	    }
+	    
+	    public ArrayList fetchReports(int employeeID, String dateStart, String dateEnd) throws ClassNotFoundException {
+	    	String FETCH_DTR_SQL = "SELECT * FROM dtr_table WHERE employeeID = "+employeeID+" AND DATE_FORMAT(date_in, '%c/%d/%Y') BETWEEN '"+dateStart+"' AND '"+dateEnd+"'";
+	        ArrayList<HashMap<String,String>> reports = new ArrayList<HashMap<String,String>>();
+	        
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        try (Connection connection = DriverManager
+	            .getConnection(url,user,password);
+	        		
+	            PreparedStatement preparedStatement = connection.prepareStatement(FETCH_DTR_SQL)) {
+	            System.out.println(preparedStatement);
+	            ResultSet result = preparedStatement.executeQuery();
+	            
+	            while(result.next()) {
+	    	        HashMap<String,String> record = new HashMap<String,String>();
+	    	        record.put("date_in", result.getString("date_in"));
+	    	        record.put("date_out", result.getString("date_out"));
+	    	        reports.add(record);
+	            }
+	            
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	        
+	    	return reports;
 	    }
 	    
 	    public Employee recordTimeIn(String dateTime, int employeeID) throws ClassNotFoundException {

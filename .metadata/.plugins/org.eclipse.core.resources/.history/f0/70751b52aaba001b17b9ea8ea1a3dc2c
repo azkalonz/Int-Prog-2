@@ -1,0 +1,72 @@
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+	<main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp" />
+            
+             <div class="content">
+                <div class="payroll">
+                    <h1>Pay Roll</h1>
+                    <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+
+<script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
+                    <br><br>
+                    <table>
+                        <thead>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>No. of Hours</th>
+                            <th>Rate per Hour</th>
+                            <th>Pay</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ayade, Mark Raymond M</td>
+                                <td>172.7</td>
+                                <td>Php. 67.00</td>
+                                <td>Php. 11,570.90</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Ayade, Mark Raymond M</td>
+                                <td>172.7</td>
+                                <td>Php. 67.00</td>
+                                <td>Php. 11,570.90</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Ayade, Mark Raymond M</td>
+                                <td>172.7</td>
+                                <td>Php. 67.00</td>
+                                <td>Php. 11,570.90</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Ayade, Mark Raymond M</td>
+                                <td>172.7</td>
+                                <td>Php. 67.00</td>
+                                <td>Php. 11,570.90</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Ayade, Mark Raymond M</td>
+                                <td>172.7</td>
+                                <td>Php. 67.00</td>
+                                <td>Php. 11,570.90</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="<%=request.getContextPath()%>/script/dtr.js"></script>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

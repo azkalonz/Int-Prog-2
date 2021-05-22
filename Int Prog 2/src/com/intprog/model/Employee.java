@@ -1,9 +1,26 @@
 package com.intprog.model;
 
 public class Employee {
-	private String firstname,lastname,email,username,password,mi;
+	private String firstname,lastname,email,username,password,mi,designation;
 	private DTRModel DTR;
+	private float ratePerHour;
 	
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public float getRatePerHour() {
+		return ratePerHour;
+	}
+
+	public void setRatePerHour(float ratePerHour) {
+		this.ratePerHour = ratePerHour;
+	}
+
 	public int employeeID;
 	
 	public int getEmployeeID() {

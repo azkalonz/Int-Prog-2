@@ -1,0 +1,42 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+
+<div class="tableCon">
+            <h1>Employees</h1>
+            <br>
+            <c:if test="${empty employees}">
+			    No employees yet. <a href="<%=request.getContextPath() %>/register">Register now</a>
+			</c:if>
+            <table id="theTable">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${employees}" var="employee">
+					    <tr>      
+					        <td>${employee.employeeID}</td>
+					        <td>${employee.firstname} ${employee.lastname}</td>
+					        <td>${employee.email}</td>
+					        <td>${employee.username}</td>
+					        <td>
+					        	<a class="button-link" href="?id=${employee.employeeID}">
+					        		View
+					        	</a>
+					        	<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
+					        		Delete					        		
+					        	</a>
+					        </td>
+					    </tr>
+					</c:forEach>
+                </tbody>
+            </table>
+        </div>
+
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

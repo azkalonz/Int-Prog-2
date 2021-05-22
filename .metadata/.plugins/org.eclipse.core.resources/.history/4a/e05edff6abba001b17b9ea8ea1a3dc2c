@@ -1,0 +1,66 @@
+package com.intprog.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.intprog.dao.EmployeeDAO;
+import com.intprog.model.Employee;
+import com.intprog.model.ReportModel;
+
+/**
+ * Servlet implementation class ReportController
+ */
+@WebServlet("/report")
+public class ReportController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private EmployeeDAO employeeDAO = new EmployeeDAO();
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ReportController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		getServletContext().getRequestDispatcher("/WEB-INF/views/report.jsp").forward(request, response);
+		Employee emp = new Employee();
+		String id = request.getParameter("id");
+		String dateStart = request.getParameter("dateStart");
+		String dateEnd = request.getParameter("dateEnd");
+		ReportModel reports = new ReportModel();
+		
+		try {
+			emp = employeeDAO.selectEmployee(Integer.parseInt(id));
+			if(emp.employeeID>0) {
+				reports.setReports(employeeDAO.fetchReports(Integer.parseInt(id), dateStart, dateEnd));
+				getServletContext().setAttribute("reports", reports);
+				getServletContext().setAttribute("employee", emp);		
+				getServletContext().setAttribute("page", "report");	
+				getServletContext().getRequestDispatcher("/WEB-INF/views/report.jsp").forward(request, response);
+			} else {
+				response.sendRedirect(request.getContextPath()+"/employee");
+			}
+		} catch(Exception e) {
+			
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

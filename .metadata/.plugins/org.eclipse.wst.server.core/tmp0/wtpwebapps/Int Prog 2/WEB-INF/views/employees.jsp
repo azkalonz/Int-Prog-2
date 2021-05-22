@@ -17,6 +17,7 @@
 	                        <th>Name</th>
 	                        <th>Email</th>
 	                        <th>Username</th>
+	                        <th>Designation</th>
 	                        <th>Actions</th>
 	                    </thead>
 	                    <tbody>
@@ -26,7 +27,11 @@
 							        <td>${employee.firstname} ${employee.lastname}</td>
 							        <td>${employee.email}</td>
 							        <td>${employee.username}</td>
+							        <td>${employee.designation}</td>
 							        <td>
+							        	<a class="button-link" id="report-url">
+							        		<div class="button-action orange">View Report</div>
+							        	</a>
 							        	<a class="button-link" href="?id=${employee.employeeID}">
 							        		<div class="button-action orange">Edit</div>
 							        	</a>
@@ -44,5 +49,11 @@
             </div>
         </div>
     </main>
+    <script>
+	    const startOfMonth = moment().clone().startOf('month').format('M/DD/YYYY');
+	    const dateToday   = moment().format("M/DD/YYYY");
+    	const reportbtn = document.querySelector("#report-url");
+    	reportbtn.setAttribute("href","report?page=report&id=${employee.employeeID}"+"&dateStart="+startOfMonth+"&dateEnd="+dateToday);
+    </script>
 
 <jsp:include page="/WEB-INF/layout/footer.jsp" />

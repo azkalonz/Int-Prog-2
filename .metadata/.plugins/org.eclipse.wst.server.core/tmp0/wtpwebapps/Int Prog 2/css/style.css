@@ -405,3 +405,33 @@ main .container .content table tbody .button-action {
   color: rgba(220, 46, 69, 0.742);
   border-bottom: 1px solid rgba(154, 150, 150, 0.803);
 }
+.payroll {
+  width: 830px;
+  max-height: 900px;
+}
+
+.payroll h1 {
+  font-size: 50px;
+}
+
+.payroll table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.payroll table thead th {
+  height: 70px;
+  background: rgb(220, 46, 69);
+  color: white;
+  font-size: 16px;
+}
+
+.payroll table tbody tr {
+  height: 60px;
+}
+
+.payroll table tbody tr td {
+  color: rgba(220, 46, 69, 0.824);
+  border-bottom: 1px solid rgba(176, 175, 175, 0.885);
+}

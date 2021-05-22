@@ -33,9 +33,9 @@ public class EmployeeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
 		ArrayList<Employee> employees = new ArrayList<Employee>();
 		Employee emp = new Employee();
+		String id = request.getParameter("id");
 		try {
 			emp = employeeDAO.selectEmployee(Integer.parseInt(id));
 			if(emp.employeeID>0) {

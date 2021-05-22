@@ -44,6 +44,8 @@ public class UpdateEmployee extends HttpServlet {
         String lastName = request.getParameter("lastname");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String designation = request.getParameter("designation");
+        String ratePerHour = request.getParameter("ratePerHour");
         String email = request.getParameter("email");
         String mi = request.getParameter("mi");
 
@@ -54,6 +56,8 @@ public class UpdateEmployee extends HttpServlet {
         employee.setPassword(password);
         employee.setEmail(email);
         employee.setMi(mi);
+        employee.setRatePerHour(Float.parseFloat(ratePerHour));
+        employee.setDesignation(designation);
         employee.setEmployeeID(Integer.parseInt(id));
 
 

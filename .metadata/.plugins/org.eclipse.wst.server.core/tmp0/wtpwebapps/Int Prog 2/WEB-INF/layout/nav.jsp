@@ -15,4 +15,7 @@
     <a href="<%=request.getContextPath()%>/dtr?page=dtr">
         <div class="links<c:if test="${page=='dtr'}"> active</c:if>">DTR</div>
     </a>
+    <a href="<%=request.getContextPath()%>/report?page=report">
+        <div class="links<c:if test="${page=='report'}"> active</c:if>">Report</div>
+    </a>
 </div>

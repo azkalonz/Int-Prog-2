@@ -30,6 +30,15 @@
                         <input type="text" value="${employee.username}" name="username">
                     </div>                   
                     <div class="infos">
+                        <span>Designation</span>
+                        <input type="text" value="${employee.designation}" name="designation">
+                    </div>                   
+                    <div class="infos">
+                        <span>Rate Per Hour</span>
+                        <input type="number" value="${employee.ratePerHour}" name="ratePerHour">
+                    </div>                   
+
+                    <div class="infos">
                         <span>Password</span>
                         <input type="text" value="${employee.password}" name="password">
                     </div>

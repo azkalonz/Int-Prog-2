@@ -1,0 +1,56 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+<main>
+        <div class="container">
+            <jsp:include page="/WEB-INF/layout/nav.jsp" />
+
+            <div class="content">
+	            <c:if test="${empty employees}">
+				    No employees yet.<br/><br/> <a class="button-link" href="<%=request.getContextPath() %>/register">Register now</a>
+				</c:if>
+				
+	            <c:if test="${not empty employees}">
+	                <table>
+	                    <thead>
+	                        <th>User Id</th>
+	                        <th>Name</th>
+	                        <th>Email</th>
+	                        <th>Username</th>
+	                        <th>Designation</th>
+	                        <th>Actions</th>
+	                    </thead>
+	                    <tbody>
+	                        <c:forEach items="${employees}" var="employee">
+							    <tr>      
+							        <td>${employee.employeeID}</td>
+							        <td>${employee.firstname} ${employee.lastname}</td>
+							        <td>${employee.email}</td>
+							        <td>${employee.username}</td>
+							        <td>${employee.designation}</td>
+							        <td>
+							        	<a class="button-link" id="report-url">
+							        		<div class="button-action orange">View Report</div>
+							        	</a>
+							        	<a class="button-link" href="?id=${employee.employeeID}">
+							        		<div class="button-action orange">Edit</div>
+							        	</a>
+							        	<a class="button-link" href="<%=request.getContextPath() %>/delete?id=${employee.employeeID}">
+							        		<div class="button-action red">
+							        			Delete
+							        		</div>					        		
+							        	</a>
+							        </td>
+							    </tr>
+							</c:forEach>
+	                    </tbody>
+	                </table>
+                </c:if>
+            </div>
+        </div>
+    </main>
+    <script>
+    	console.log(moment)
+    </script>
+
+<jsp:include page="/WEB-INF/layout/footer.jsp" />
