@@ -29,7 +29,7 @@
 							        <td>${employee.username}</td>
 							        <td>${employee.designation}</td>
 							        <td>
-							        	<a class="button-link" id="report-url">
+							        	<a class="button-link report-url" data-id="${employee.employeeID}">
 							        		<div class="button-action orange">View Report</div>
 							        	</a>
 							        	<a class="button-link" href="?id=${employee.employeeID}">
@@ -52,8 +52,9 @@
     <script>
 	    const startOfMonth = moment().clone().startOf('month').format('M/DD/YYYY');
 	    const dateToday   = moment().format("M/DD/YYYY");
-    	const reportbtn = document.querySelector("#report-url");
-    	reportbtn.setAttribute("href","report?page=report&id=${employee.employeeID}"+"&dateStart="+startOfMonth+"&dateEnd="+dateToday);
+    	$('.report-url').each(function(){
+    		$(this).attr('href',"report?page=report&id="+$(this).attr('data-id')+"&dateStart="+startOfMonth+"&dateEnd="+dateToday)
+    	});
     </script>
 
 <jsp:include page="/WEB-INF/layout/footer.jsp" />
