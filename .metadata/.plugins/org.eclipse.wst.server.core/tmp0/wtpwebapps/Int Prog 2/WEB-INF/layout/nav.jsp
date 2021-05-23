@@ -6,16 +6,25 @@
     <a href="<%=request.getContextPath()%>?page=home">
         <div class="links<c:if test="${page=='home'}"> active</c:if>">My Profile</div>
     </a>
-    <a href="<%=request.getContextPath()%>/register?page=register">
+    <a href="<%=request.getContextPath()%>/register?page=register" class="admin-link">
         <div class="links<c:if test="${page=='register'}"> active</c:if>">Add User</div>
     </a>
-    <a href="<%=request.getContextPath()%>/employee?page=view">
+    <a href="<%=request.getContextPath()%>/employee?page=view" class="admin-link">
         <div class="links<c:if test="${page=='view'}"> active</c:if>">View Users</div>
     </a>
     <a href="<%=request.getContextPath()%>/dtr?page=dtr">
         <div class="links<c:if test="${page=='dtr'}"> active</c:if>">DTR</div>
     </a>
-    <a href="<%=request.getContextPath()%>/report?page=report">
+    <a class="report-link">
         <div class="links<c:if test="${page=='report'}"> active</c:if>">Report</div>
     </a>
 </div>
+<script>
+	const user = JSON.parse(localStorage['user']);
+	if(user){
+		if(user.role!=='admin'){
+			$('.admin-link').hide()
+		}
+		$('.report-link').attr('href','<%=request.getContextPath()%>/report?page=report&id='+user.employeeID)
+	}
+</script>

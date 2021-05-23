@@ -133,7 +133,6 @@ public class EmployeeDAO {
 	            	employee.setPassword(result.getString("password"));
 	            	employee.setDesignation(result.getString("designation"));
 	            	employee.setRatePerHour(result.getFloat("rate_per_hour"));
-	            	employee.setRole(result.getString("role"));
 	            }
 
 	        } catch (SQLException e) {
@@ -143,7 +142,7 @@ public class EmployeeDAO {
 	    }
 	  
 	  public Employee updateEmployee(Employee employee) throws ClassNotFoundException {
-		String UPDATE_SQL_TEMPLATE = "UPDATE employee_table SET firstname = '%s', lastname = '%s', mi = '%s', email = '%s', username = '%s',password = '%s', designation = '%s', rate_per_hour = %.2f, role = '%s' WHERE employeeID = %d";
+		String UPDATE_SQL_TEMPLATE = "UPDATE employee_table SET firstname = '%s', lastname = '%s', mi = '%s', email = '%s', username = '%s',password = '%s', designation = '%s', rate_per_hour = %.2f WHERE employeeID = %d";
 	    String UPDATE_SQL = String.format(
 	    						UPDATE_SQL_TEMPLATE, 
 	    						employee.getFirstname(),
@@ -154,7 +153,6 @@ public class EmployeeDAO {
 	    						employee.getPassword(),
 	    						employee.getDesignation(),
 	    						employee.getRatePerHour(),
-	    						employee.getRole(),
 	    						employee.getEmployeeID()
     						);
 
@@ -233,7 +231,6 @@ public class EmployeeDAO {
 	            	employee.setEmail(result.getString("email"));
 	            	employee.setUsername(result.getString("username"));
 	            	employee.setPassword(result.getString("password"));
-	            	employee.setRole(result.getString("role"));
 	    	        employee.setDTR(DTR);
 	            }
 	            

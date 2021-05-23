@@ -25,6 +25,6 @@
 		if(user.role!=='admin'){
 			$('.admin-link').hide()
 		}
-		$('.report-link').attr('href','<%=request.getContextPath()%>/report?page=report&id='+user.employeeID)
+		$('.report-link').attr('href','<%=request.getContextPath()%>/report?page=report')
 	}
 </script>

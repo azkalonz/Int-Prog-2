@@ -233,7 +233,6 @@ public class EmployeeDAO {
 	            	employee.setEmail(result.getString("email"));
 	            	employee.setUsername(result.getString("username"));
 	            	employee.setPassword(result.getString("password"));
-	            	employee.setRole(result.getString("role"));
 	    	        employee.setDTR(DTR);
 	            }
 	            
